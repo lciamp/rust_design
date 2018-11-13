@@ -29,7 +29,6 @@ impl PersistanceManager {
     pub fn save(&self, j: &Journal, filename: &str) {
         let cwd = env::current_dir().expect("can't get cwd.");
         let fname = format!("{}/{}", cwd.display(), filename);
-        println!("{}", fname);
         
         let mut f = File::create(fname).expect("can't create file");
 
