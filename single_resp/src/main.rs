@@ -26,7 +26,7 @@ impl Journal {
 
 struct PersistanceManager {}
 impl PersistanceManager {
-    pub fn save(j: &Journal, filename: &str) {
+    pub fn save(&self, j: &Journal, filename: &str) {
         let cwd = env::current_dir().expect("can't get cwd.");
         let fname = format!("{}/{}", cwd.display(), filename);
         
@@ -45,6 +45,7 @@ fn main() {
     j.add_entry("i cried today");
     j.add_entry("it worked");
 
-    PersistanceManager::save(&j, "file.txt");
+    let pm = PersistanceManager{};
+    pm.save(&j, "file.txt");
 
 }
